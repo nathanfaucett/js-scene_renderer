@@ -42,13 +42,13 @@ RendererPrototype.destructor = function() {
 };
 
 RendererPrototype.init = function() {
-    this.emit("init");
+    this.emitArg("init");
     return this;
 };
 
 RendererPrototype.clear = function(emitEvent) {
     if (emitEvent !== false) {
-        this.emit("clear");
+        this.emitArg("clear");
     }
     return this;
 };
@@ -70,7 +70,7 @@ RendererPrototype.destroy = function(emitEvent) {
 
     if (sceneRenderer) {
         if (emitEvent !== false) {
-            this.emit("destroy");
+            this.emitArg("destroy");
         }
         sceneRenderer.removeRenderer(this);
         this.clear(false);

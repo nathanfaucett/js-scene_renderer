@@ -65,7 +65,7 @@ SceneRendererPrototype.init = function() {
         sortRenderers(this);
         this.initPlugins();
         this.initRenderers();
-        this.emit("init");
+        this.emitArg("init");
     }
     return this;
 };
@@ -85,7 +85,7 @@ SceneRendererPrototype.clear = function(emitEvent) {
         i;
 
     if (emitEvent !== false) {
-        this.emit("clear");
+        this.emitArg("clear");
     }
 
     i = renderers.length;
@@ -102,7 +102,7 @@ SceneRendererPrototype.clear = function(emitEvent) {
 
 SceneRendererPrototype.destroy = function(emitEvent) {
     if (emitEvent !== false) {
-        this.emit("destroy");
+        this.emitArg("destroy");
     }
     this.clear(false);
     return this;
@@ -141,7 +141,7 @@ function SceneRendererPrototype_addRenderer(_this, renderer) {
             sortRenderers(this);
             renderer.init();
         }
-        _this.emit("addRenderer", renderer);
+        _this.emitArg("addRenderer", renderer);
     } else {
         throw new Error(
             "SceneRenderer addRenderer(...renderers) trying to add renderer " +
@@ -167,7 +167,7 @@ function SceneRendererPrototype_removeRenderer(_this, renderer) {
         className = renderer.className;
 
     if (rendererHash[className]) {
-        _this.emit("removeRenderer", renderer);
+        _this.emitArg("removeRenderer", renderer);
         renderer.sceneRenderer = null;
         renderers.splice(indexOf(renderers, renderer), 1);
         delete rendererHash[className];
@@ -250,7 +250,7 @@ function SceneRendererPrototype_addPlugin(_this, plugin) {
         if (this._initted) {
             plugin.init();
         }
-        _this.emit("addPlugin", plugin);
+        _this.emitArg("addPlugin", plugin);
     } else {
         throw new Error(
             "SceneRenderer addPlugin(...plugins) trying to add plugin " +
@@ -276,7 +276,7 @@ function SceneRendererPrototype_removePlugin(_this, plugin) {
         className = plugin.className;
 
     if (pluginHash[className]) {
-        _this.emit("removePlugin", plugin);
+        _this.emitArg("removePlugin", plugin);
         plugin.sceneRenderer = null;
         plugins.splice(indexOf(plugins, plugin), 1);
         delete pluginHash[className];

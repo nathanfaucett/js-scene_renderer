@@ -34,13 +34,13 @@ PluginPrototype.destructor = function() {
 };
 
 PluginPrototype.init = function() {
-    this.emit("init");
+    this.emitArg("init");
     return this;
 };
 
 PluginPrototype.clear = function(emitEvent) {
     if (emitEvent !== false) {
-        this.emit("clear");
+        this.emitArg("clear");
     }
     return this;
 };
@@ -58,7 +58,7 @@ PluginPrototype.destroy = function(emitEvent) {
 
     if (sceneRenderer) {
         if (emitEvent !== false) {
-            this.emit("destroy");
+            this.emitArg("destroy");
         }
         sceneRenderer.removePlugin(this);
         this.clear(false);
