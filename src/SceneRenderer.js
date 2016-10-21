@@ -133,7 +133,7 @@ function SceneRendererPrototype_addRenderer(_this, renderer) {
         className = renderer.className;
 
     if (!rendererHash[className]) {
-        renderer.scene = _this;
+        renderer.sceneRenderer = _this;
         renderers[renderers.length] = renderer;
         rendererHash[className] = renderer;
 
@@ -168,7 +168,7 @@ function SceneRendererPrototype_removeRenderer(_this, renderer) {
 
     if (rendererHash[className]) {
         _this.emit("removeRenderer", renderer);
-        renderer.scene = null;
+        renderer.sceneRenderer = null;
         renderers.splice(indexOf(renderers, renderer), 1);
         delete rendererHash[className];
     } else {
@@ -244,7 +244,7 @@ function SceneRendererPrototype_addPlugin(_this, plugin) {
         className = plugin.className;
 
     if (!pluginHash[className]) {
-        plugin.scene = _this;
+        plugin.sceneRenderer = _this;
         plugins[plugins.length] = plugin;
         pluginHash[className] = plugin;
         if (this._initted) {
@@ -277,7 +277,7 @@ function SceneRendererPrototype_removePlugin(_this, plugin) {
 
     if (pluginHash[className]) {
         _this.emit("removePlugin", plugin);
-        plugin.scene = null;
+        plugin.sceneRenderer = null;
         plugins.splice(indexOf(plugins, plugin), 1);
         delete pluginHash[className];
     } else {

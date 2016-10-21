@@ -12,7 +12,7 @@ function Plugin() {
 
     Class.call(this);
 
-    this.scene = null;
+    this.sceneRenderer = null;
 }
 Class.extend(Plugin, "scene_renderer.Plugin");
 PluginPrototype = Plugin.prototype;
@@ -28,7 +28,7 @@ PluginPrototype.destructor = function() {
 
     ClassPrototype.destructor.call(this);
 
-    this.scene = null;
+    this.sceneRenderer = null;
 
     return this;
 };
@@ -54,13 +54,13 @@ PluginPrototype.after = function() {
 };
 
 PluginPrototype.destroy = function(emitEvent) {
-    var scene = this.scene;
+    var sceneRenderer = this.sceneRenderer;
 
-    if (scene) {
+    if (sceneRenderer) {
         if (emitEvent !== false) {
             this.emit("destroy");
         }
-        scene.removePlugin(this);
+        sceneRenderer.removePlugin(this);
         this.clear(false);
     }
 

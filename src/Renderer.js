@@ -9,7 +9,10 @@ module.exports = Renderer;
 
 
 function Renderer() {
+
     Class.call(this);
+
+    this.sceneRenderer = null;
 }
 
 Renderer.onExtend = function(child, className, order) {
@@ -32,7 +35,7 @@ RendererPrototype.destructor = function() {
 
     ClassPrototype.destructor.call(this);
 
-    this.scene = null;
+    this.sceneRenderer = null;
 
     return this;
 };
@@ -62,13 +65,13 @@ RendererPrototype.render = function() {
 };
 
 RendererPrototype.destroy = function(emitEvent) {
-    var scene = this.scene;
+    var sceneRenderer = this.sceneRenderer;
 
-    if (scene) {
+    if (sceneRenderer) {
         if (emitEvent !== false) {
             this.emit("destroy");
         }
-        scene.removeRenderer(this);
+        sceneRenderer.removeRenderer(this);
         this.clear(false);
     }
 
