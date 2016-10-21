@@ -1,4 +1,5 @@
-var Class = require("@nathanfaucett/class");
+var Class = require("@nathanfaucett/class"),
+    isNullOrUndefined = require("@nathanfaucett/is_null_or_undefined");
 
 
 var ClassPrototype = Class.prototype,
