@@ -23,7 +23,7 @@
   "license": "MIT",
   "readmeFilename": "README.md",
   "devDependencies": {
-    "@nathanfaucett/scene_graph": "git@github.com:nathanfaucett/js-scene_graph.git",
+    "@nathanfaucett/scene_graph": "git://github.com/nathanfaucett/js-scene_graph.git",
     "@nathanfaucett/task": "^0.0.7",
     "gulp-jsbeautifier": "^2.0.3",
     "gulp-jshint": "^2.0.1",
@@ -33,7 +33,7 @@
     "zuul": "^3.11.0"
   },
   "dependencies": {
-    "@nathanfaucett/class": "git@github.com:nathanfaucett/js-class.git",
+    "@nathanfaucett/class": "git://github.com/nathanfaucett/js-class.git",
     "@nathanfaucett/index_of": "^0.0.1"
   }
 }
